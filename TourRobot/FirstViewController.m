@@ -210,6 +210,9 @@
     NSLog(@"image taped");
     
     [udpClient sentMessage:@"glGuolong"];
+//    Byte *byte;
+//    byte = {1,2,3,5};
+//    byte[2] = 5;
     
 //    if (isStart == NO) {
 //        isStart = YES;

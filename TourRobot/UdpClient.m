@@ -10,7 +10,8 @@
 
 @interface UdpClient ()<AsyncSocketDelegate> {
     AsyncUdpSocket  *client;
-//    Byte byte[16];//  = Byte [16];
+//    Byte byte[16];
+//    = Byte [16];
     Byte *byteChars;
 }
 @end

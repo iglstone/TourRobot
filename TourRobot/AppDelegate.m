@@ -13,6 +13,9 @@
 #import "FourthViewController.h"
 #import "LoginViewController.h"
 #import "DeskInfoHelper.h"
+#import "DijkstraAlgorithmViewController.h"
+#import "FloydAlgorithmViewController.h"
+#import "RobotRouteViewController.h"
 
 #import "SocketClientViewController.h"
 @interface AppDelegate ()
@@ -30,7 +33,7 @@
     
     self.window = [[UIWindow alloc]initWithFrame:[[UIScreen mainScreen] bounds]];
     //    _main = [MainViewController new];
-    _main = [LoginViewController new];
+    _main = [RobotRouteViewController new];
     self.window.rootViewController = _main;//切换viewcontroller 只要把main换掉就好。
     
     [self.window makeKeyAndVisible];
