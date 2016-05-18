@@ -9,7 +9,21 @@
 /* Begin PBXBuildFile section */
 		4E5022C5656727739E159894 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A121279BE7156B011D87315D /* libPods.a */; };
 		E30183291CD9C4D1009C818C /* FloydAlgorithmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E30183281CD9C4D1009C818C /* FloydAlgorithmViewController.m */; };
+		E31EA79A1CE57EDB00E320B8 /* PinchView.m in Sources */ = {isa = PBXBuildFile; fileRef = E31EA7991CE57EDB00E320B8 /* PinchView.m */; };
+		E31EA7A11CE5B8C700E320B8 /* ZDStickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = E31EA79D1CE5B8C700E320B8 /* ZDStickerView.m */; };
+		E31EA7A21CE5B8C700E320B8 /* SPGripViewBorderView.m in Sources */ = {isa = PBXBuildFile; fileRef = E31EA79F1CE5B8C700E320B8 /* SPGripViewBorderView.m */; };
+		E31EA7A31CE5B8C700E320B8 /* ZDStickerView.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E31EA7A01CE5B8C700E320B8 /* ZDStickerView.bundle */; };
+		E361A0141CEC46930084353C /* RouteView.m in Sources */ = {isa = PBXBuildFile; fileRef = E361A0131CEC46930084353C /* RouteView.m */; };
+		E3AFC6961CE465F800707828 /* DrawViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E3AFC6951CE465F800707828 /* DrawViewController.m */; };
+		E3AFC6991CE46B1800707828 /* DragView1.m in Sources */ = {isa = PBXBuildFile; fileRef = E3AFC6981CE46B1800707828 /* DragView1.m */; };
+		E3B64FC11CDDD5A000584A38 /* GlViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E3B64FBA1CDDD5A000584A38 /* GlViewController.m */; };
+		E3B64FC21CDDD5A000584A38 /* PathBuilderView.m in Sources */ = {isa = PBXBuildFile; fileRef = E3B64FBC1CDDD5A000584A38 /* PathBuilderView.m */; };
+		E3B64FC31CDDD5A000584A38 /* PathBuilderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E3B64FBE1CDDD5A000584A38 /* PathBuilderViewController.m */; };
+		E3B64FC41CDDD5A000584A38 /* ShapeView.m in Sources */ = {isa = PBXBuildFile; fileRef = E3B64FC01CDDD5A000584A38 /* ShapeView.m */; };
+		E3B64FC71CDDD5E200584A38 /* PointViews.m in Sources */ = {isa = PBXBuildFile; fileRef = E3B64FC61CDDD5E200584A38 /* PointViews.m */; };
 		E3B65FA41CDAED43009B6551 /* RobotRouteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E3B65FA31CDAED43009B6551 /* RobotRouteViewController.m */; };
+		E3D79A781CEAABDC0009600F /* RobotRouteViewController2.m in Sources */ = {isa = PBXBuildFile; fileRef = E3D79A771CEAABDC0009600F /* RobotRouteViewController2.m */; };
+		E3D79A7B1CEAB8150009600F /* FloydAlgorithm.m in Sources */ = {isa = PBXBuildFile; fileRef = E3D79A7A1CEAB8150009600F /* FloydAlgorithm.m */; };
 		E3F979F81C4C90EF0029BB09 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E3F979F71C4C90EF0029BB09 /* main.m */; };
 		E3F979FB1C4C90EF0029BB09 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E3F979FA1C4C90EF0029BB09 /* AppDelegate.m */; };
 		E3F979FE1C4C90EF0029BB09 /* DijkstraAlgorithmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E3F979FD1C4C90EF0029BB09 /* DijkstraAlgorithmViewController.m */; };
@@ -86,8 +100,35 @@
 		A121279BE7156B011D87315D /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		E30183271CD9C4D1009C818C /* FloydAlgorithmViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FloydAlgorithmViewController.h; sourceTree = "<group>"; };
 		E30183281CD9C4D1009C818C /* FloydAlgorithmViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FloydAlgorithmViewController.m; sourceTree = "<group>"; };
+		E31EA7981CE57EDB00E320B8 /* PinchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PinchView.h; sourceTree = "<group>"; };
+		E31EA7991CE57EDB00E320B8 /* PinchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PinchView.m; sourceTree = "<group>"; };
+		E31EA79C1CE5B8C700E320B8 /* ZDStickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZDStickerView.h; sourceTree = "<group>"; };
+		E31EA79D1CE5B8C700E320B8 /* ZDStickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZDStickerView.m; sourceTree = "<group>"; };
+		E31EA79E1CE5B8C700E320B8 /* SPGripViewBorderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPGripViewBorderView.h; sourceTree = "<group>"; };
+		E31EA79F1CE5B8C700E320B8 /* SPGripViewBorderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPGripViewBorderView.m; sourceTree = "<group>"; };
+		E31EA7A01CE5B8C700E320B8 /* ZDStickerView.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ZDStickerView.bundle; sourceTree = "<group>"; };
+		E361A0121CEC46930084353C /* RouteView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RouteView.h; sourceTree = "<group>"; };
+		E361A0131CEC46930084353C /* RouteView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RouteView.m; sourceTree = "<group>"; };
+		E3AFC6941CE465F800707828 /* DrawViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawViewController.h; sourceTree = "<group>"; };
+		E3AFC6951CE465F800707828 /* DrawViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawViewController.m; sourceTree = "<group>"; };
+		E3AFC6971CE46B1800707828 /* DragView1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DragView1.h; sourceTree = "<group>"; };
+		E3AFC6981CE46B1800707828 /* DragView1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DragView1.m; sourceTree = "<group>"; };
+		E3B64FB91CDDD5A000584A38 /* GlViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlViewController.h; sourceTree = "<group>"; };
+		E3B64FBA1CDDD5A000584A38 /* GlViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlViewController.m; sourceTree = "<group>"; };
+		E3B64FBB1CDDD5A000584A38 /* PathBuilderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PathBuilderView.h; sourceTree = "<group>"; };
+		E3B64FBC1CDDD5A000584A38 /* PathBuilderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PathBuilderView.m; sourceTree = "<group>"; };
+		E3B64FBD1CDDD5A000584A38 /* PathBuilderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PathBuilderViewController.h; sourceTree = "<group>"; };
+		E3B64FBE1CDDD5A000584A38 /* PathBuilderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PathBuilderViewController.m; sourceTree = "<group>"; };
+		E3B64FBF1CDDD5A000584A38 /* ShapeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShapeView.h; sourceTree = "<group>"; };
+		E3B64FC01CDDD5A000584A38 /* ShapeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShapeView.m; sourceTree = "<group>"; };
+		E3B64FC51CDDD5E200584A38 /* PointViews.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PointViews.h; sourceTree = "<group>"; };
+		E3B64FC61CDDD5E200584A38 /* PointViews.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PointViews.m; sourceTree = "<group>"; };
 		E3B65FA21CDAED43009B6551 /* RobotRouteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RobotRouteViewController.h; sourceTree = "<group>"; };
 		E3B65FA31CDAED43009B6551 /* RobotRouteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RobotRouteViewController.m; sourceTree = "<group>"; };
+		E3D79A761CEAABDC0009600F /* RobotRouteViewController2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RobotRouteViewController2.h; sourceTree = "<group>"; };
+		E3D79A771CEAABDC0009600F /* RobotRouteViewController2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RobotRouteViewController2.m; sourceTree = "<group>"; };
+		E3D79A791CEAB8150009600F /* FloydAlgorithm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FloydAlgorithm.h; sourceTree = "<group>"; };
+		E3D79A7A1CEAB8150009600F /* FloydAlgorithm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FloydAlgorithm.m; sourceTree = "<group>"; };
 		E3F979F31C4C90EE0029BB09 /* TourRobot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TourRobot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3F979F71C4C90EF0029BB09 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E3F979F91C4C90EF0029BB09 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -191,6 +232,7 @@
 		E3F97AB01C4C9FAE0029BB09 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 		E3F97AB21C4CBE7E0029BB09 /* UdpClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UdpClient.h; sourceTree = "<group>"; };
 		E3F97AB31C4CBE7E0029BB09 /* UdpClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UdpClient.m; sourceTree = "<group>"; };
+		E3F9B0EE1CEC040400C97305 /* RouteHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RouteHeader.h; sourceTree = "<group>"; };
 		F61D24199851982B767D1753 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -222,6 +264,55 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		E31EA79B1CE5B8A600E320B8 /* ZDStickerView */ = {
+			isa = PBXGroup;
+			children = (
+				E31EA79C1CE5B8C700E320B8 /* ZDStickerView.h */,
+				E31EA79D1CE5B8C700E320B8 /* ZDStickerView.m */,
+				E31EA79E1CE5B8C700E320B8 /* SPGripViewBorderView.h */,
+				E31EA79F1CE5B8C700E320B8 /* SPGripViewBorderView.m */,
+				E31EA7A01CE5B8C700E320B8 /* ZDStickerView.bundle */,
+			);
+			name = ZDStickerView;
+			sourceTree = "<group>";
+		};
+		E3B64FB81CDDD53B00584A38 /* StarGazer */ = {
+			isa = PBXGroup;
+			children = (
+				E3F979FC1C4C90EF0029BB09 /* DijkstraAlgorithmViewController.h */,
+				E3F979FD1C4C90EF0029BB09 /* DijkstraAlgorithmViewController.m */,
+				E30183271CD9C4D1009C818C /* FloydAlgorithmViewController.h */,
+				E30183281CD9C4D1009C818C /* FloydAlgorithmViewController.m */,
+				E3B65FA21CDAED43009B6551 /* RobotRouteViewController.h */,
+				E3B65FA31CDAED43009B6551 /* RobotRouteViewController.m */,
+				E3D79A761CEAABDC0009600F /* RobotRouteViewController2.h */,
+				E3D79A771CEAABDC0009600F /* RobotRouteViewController2.m */,
+				E3F9B0EE1CEC040400C97305 /* RouteHeader.h */,
+				E3D79A791CEAB8150009600F /* FloydAlgorithm.h */,
+				E3D79A7A1CEAB8150009600F /* FloydAlgorithm.m */,
+				E361A0121CEC46930084353C /* RouteView.h */,
+				E361A0131CEC46930084353C /* RouteView.m */,
+				E3B64FB91CDDD5A000584A38 /* GlViewController.h */,
+				E3B64FBA1CDDD5A000584A38 /* GlViewController.m */,
+				E3B64FBB1CDDD5A000584A38 /* PathBuilderView.h */,
+				E3B64FBC1CDDD5A000584A38 /* PathBuilderView.m */,
+				E3B64FC51CDDD5E200584A38 /* PointViews.h */,
+				E3B64FC61CDDD5E200584A38 /* PointViews.m */,
+				E3B64FBF1CDDD5A000584A38 /* ShapeView.h */,
+				E3B64FC01CDDD5A000584A38 /* ShapeView.m */,
+				E3B64FBD1CDDD5A000584A38 /* PathBuilderViewController.h */,
+				E3B64FBE1CDDD5A000584A38 /* PathBuilderViewController.m */,
+				E3AFC6941CE465F800707828 /* DrawViewController.h */,
+				E3AFC6951CE465F800707828 /* DrawViewController.m */,
+				E3AFC6971CE46B1800707828 /* DragView1.h */,
+				E3AFC6981CE46B1800707828 /* DragView1.m */,
+				E31EA7981CE57EDB00E320B8 /* PinchView.h */,
+				E31EA7991CE57EDB00E320B8 /* PinchView.m */,
+				E31EA79B1CE5B8A600E320B8 /* ZDStickerView */,
+			);
+			name = StarGazer;
+			sourceTree = "<group>";
+		};
 		E3F979EA1C4C90EE0029BB09 = {
 			isa = PBXGroup;
 			children = (
@@ -245,16 +336,11 @@
 		E3F979F51C4C90EF0029BB09 /* TourRobot */ = {
 			isa = PBXGroup;
 			children = (
-				E3F97A1C1C4C926B0029BB09 /* AsyncSocket */,
 				E3F97A1B1C4C92600029BB09 /* Tools */,
+				E3F97A1C1C4C926B0029BB09 /* AsyncSocket */,
 				E3F979F91C4C90EF0029BB09 /* AppDelegate.h */,
 				E3F979FA1C4C90EF0029BB09 /* AppDelegate.m */,
-				E3F979FC1C4C90EF0029BB09 /* DijkstraAlgorithmViewController.h */,
-				E3F979FD1C4C90EF0029BB09 /* DijkstraAlgorithmViewController.m */,
-				E30183271CD9C4D1009C818C /* FloydAlgorithmViewController.h */,
-				E30183281CD9C4D1009C818C /* FloydAlgorithmViewController.m */,
-				E3B65FA21CDAED43009B6551 /* RobotRouteViewController.h */,
-				E3B65FA31CDAED43009B6551 /* RobotRouteViewController.m */,
+				E3B64FB81CDDD53B00584A38 /* StarGazer */,
 				E3F97A671C4C937E0029BB09 /* AppMacro.h */,
 				E3F97A681C4C937E0029BB09 /* PrefixHeader.pch */,
 				E3F97A691C4C93900029BB09 /* Login */,
@@ -516,6 +602,7 @@
 				E3F97A831C4C93CA0029BB09 /* login_btn_blue_nor.png in Resources */,
 				E3F97A661C4C92D90029BB09 /* SocketClientViewController_iPad.xib in Resources */,
 				E3F97A8C1C4C93CA0029BB09 /* login_avatar@2x.png in Resources */,
+				E31EA7A31CE5B8C700E320B8 /* ZDStickerView.bundle in Resources */,
 				E3F97A8D1C4C93CA0029BB09 /* login_textfield_bottom.png in Resources */,
 				E3F97A841C4C93CA0029BB09 /* login_btn_blue_nor@2x.png in Resources */,
 				E3F97AB11C4C9FAE0029BB09 /* LaunchScreen.xib in Resources */,
@@ -595,7 +682,10 @@
 			files = (
 				E3F97A451C4C92BD0029BB09 /* DeskInfoHelper.m in Sources */,
 				E3B65FA41CDAED43009B6551 /* RobotRouteViewController.m in Sources */,
+				E3B64FC41CDDD5A000584A38 /* ShapeView.m in Sources */,
 				E3F97A2A1C4C92A50029BB09 /* CommonsFunc.m in Sources */,
+				E31EA7A21CE5B8C700E320B8 /* SPGripViewBorderView.m in Sources */,
+				E3AFC6961CE465F800707828 /* DrawViewController.m in Sources */,
 				E3F97A741C4C93A10029BB09 /* ResetSecurityViewController.m in Sources */,
 				E3F97A711C4C93A10029BB09 /* LoginViewController.m in Sources */,
 				E3F979FE1C4C90EF0029BB09 /* DijkstraAlgorithmViewController.m in Sources */,
@@ -606,30 +696,40 @@
 				E3F97A481C4C92BD0029BB09 /* LewPopupBackgroundView.m in Sources */,
 				E3F97AB41C4CBE7E0029BB09 /* UdpClient.m in Sources */,
 				E3F97AA91C4C95B50029BB09 /* SecondViewController.m in Sources */,
+				E3D79A781CEAABDC0009600F /* RobotRouteViewController2.m in Sources */,
 				E3F97A2B1C4C92A50029BB09 /* CHYSlider.m in Sources */,
+				E3B64FC11CDDD5A000584A38 /* GlViewController.m in Sources */,
 				E3F97A601C4C92D90029BB09 /* ServerSocket.m in Sources */,
 				E3F97A641C4C92D90029BB09 /* SocketClientViewController.m in Sources */,
 				E3F97AAA1C4C95B50029BB09 /* ThirdViewController.m in Sources */,
 				E3F97A2D1C4C92A50029BB09 /* JSAnalogueStick.m in Sources */,
 				E3F97A981C4C94490029BB09 /* MainViewController.m in Sources */,
 				E3F97A2F1C4C92A50029BB09 /* UIColor+Hex.m in Sources */,
+				E3B64FC21CDDD5A000584A38 /* PathBuilderView.m in Sources */,
+				E361A0141CEC46930084353C /* RouteView.m in Sources */,
 				E30183291CD9C4D1009C818C /* FloydAlgorithmViewController.m in Sources */,
 				E3F97A9A1C4C94490029BB09 /* ConnectStatesCell.m in Sources */,
+				E31EA7A11CE5B8C700E320B8 /* ZDStickerView.m in Sources */,
 				E3F97A5F1C4C92D90029BB09 /* AsyncUdpSocket.m in Sources */,
 				E3F979FB1C4C90EF0029BB09 /* AppDelegate.m in Sources */,
 				E3F979F81C4C90EF0029BB09 /* main.m in Sources */,
 				E3F97AA11C4C95980029BB09 /* SettingViewController.m in Sources */,
+				E3AFC6991CE46B1800707828 /* DragView1.m in Sources */,
 				E3F97A491C4C92BD0029BB09 /* LewPopupViewAnimationDrop.m in Sources */,
 				E3F97A461C4C92BD0029BB09 /* PopupView.m in Sources */,
+				E3B64FC31CDDD5A000584A38 /* PathBuilderViewController.m in Sources */,
 				E3F97AAB1C4C95B50029BB09 /* FourthViewController.m in Sources */,
+				E31EA79A1CE57EDB00E320B8 /* PinchView.m in Sources */,
 				E3F97AA21C4C95980029BB09 /* PickDeskNumViewController.m in Sources */,
 				E3F97A2C1C4C92A50029BB09 /* RadioButton.m in Sources */,
+				E3B64FC71CDDD5E200584A38 /* PointViews.m in Sources */,
 				E3F97A9B1C4C94490029BB09 /* FirstViewController.m in Sources */,
 				E3F97A991C4C94490029BB09 /* GLViewProcessingTest.m in Sources */,
 				E3F97A611C4C92D90029BB09 /* SocketMessageModel.m in Sources */,
 				E3F97A2E1C4C92A50029BB09 /* DeskView.m in Sources */,
 				E3F97A731C4C93A10029BB09 /* WebViewController.m in Sources */,
 				E3F97A4C1C4C92BD0029BB09 /* LewPopupViewAnimationSpring.m in Sources */,
+				E3D79A7B1CEAB8150009600F /* FloydAlgorithm.m in Sources */,
 				E3F97A631C4C92D90029BB09 /* HitControlHex.m in Sources */,
 				E3F97A4B1C4C92BD0029BB09 /* LewPopupViewAnimationSlide.m in Sources */,
 				E3F97A621C4C92D90029BB09 /* HitControl.m in Sources */,

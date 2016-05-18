@@ -16,6 +16,8 @@
 #import "DijkstraAlgorithmViewController.h"
 #import "FloydAlgorithmViewController.h"
 #import "RobotRouteViewController.h"
+#import "GlViewController.h"
+#import "DrawViewController.h"
 
 #import "SocketClientViewController.h"
 @interface AppDelegate ()
@@ -32,8 +34,9 @@
     [help default];
     
     self.window = [[UIWindow alloc]initWithFrame:[[UIScreen mainScreen] bounds]];
-    //    _main = [MainViewController new];
-    _main = [RobotRouteViewController new];
+//    _main = [RobotRouteViewController new];
+//    _main = [DrawViewController new];
+    _main = [DijkstraAlgorithmViewController new];
     self.window.rootViewController = _main;//切换viewcontroller 只要把main换掉就好。
     
     [self.window makeKeyAndVisible];
