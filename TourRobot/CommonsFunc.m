@@ -17,6 +17,16 @@
 
 @implementation CommonsFunc
 
+//not pinch image in scale
++ (UIImage *)imagePinch:(UIImage *)img width:(int)width height:(int)height {
+    UIGraphicsBeginImageContextWithOptions(CGSizeMake(width, height), NO ,0.0);
+    CGRect imageRect = CGRectMake(0, 0,width, height);
+    [img drawInRect:imageRect];
+    UIImage *new = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return new;
+}
+
 + (BOOL)isFirstLaunch {
     if (![UD boolForKey:@"everLaunched"]) {
         [UD setBool:YES forKey:@"everLaunched"];

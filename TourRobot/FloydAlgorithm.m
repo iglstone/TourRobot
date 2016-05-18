@@ -114,26 +114,27 @@
 }
 
 /**
- *  输出任意两点最短路径，以及路径上的角度以及终点信息
+ *  输出任意两点最短路径，以及路径上的角度以及终点信息(终点角度和路途角度不要混淆)
  *  @param graph       图
  *  @param m           start
  *  @param n           end
  *  @param points      pointsTable, 前驱信息
  *  @param distances   distanceTable,距离信息
- *  @param vexsAngel 终点角度信息
+ *  @param vexsAngel   终点角度信息
  */
-+(void)findShortestPath:(mGraph *)graph from:(int)m to:(int)n pointsTabel:(vexsPre2DTabel *)points2 robotAngels:(vexAngels *)angels{
-    int k =  (*points2)[m][n];//robot.pointNum;
-    int angelm2k = graph->weightAndAngels[m][k].angel;
-    NSString *tem = [NSString stringWithFormat:@"path: %d,%d -> %d,", m, angelm2k, k];
-    while (k != n) {
-        int tmpk = k;
-        k = (*points2)[k][n];// robot.pointNum; //get next vertex point
-        int angelTemk2k = graph->weightAndAngels[tmpk][k].angel;
-        tem = [tem stringByAppendingString:[NSString stringWithFormat:@"%d -> %d,",angelTemk2k, k]];
++(NSString *)findShortestPath:(mGraph *)graph from:(int)start to:(int)end pointsTabel:(vexsPre2DTabel *)vexPres robotAngels:(vexAngels *)angels{
+    int pontIndexFirst =  (*vexPres)[start][end];//robot.pointNum;
+    int angelmOfStart = graph->weightAndAngels[start][pontIndexFirst].angel;
+    NSString *tem = [NSString stringWithFormat:@"path: %d,%d -> %d,", start, angelmOfStart, pontIndexFirst];
+    
+    while (pontIndexFirst != end) {
+        int pointIndexSaveFirst = pontIndexFirst;
+        pontIndexFirst = (*vexPres)[pontIndexFirst][end];// get next vertex point
+        int angelOfFirst = graph->weightAndAngels[pointIndexSaveFirst][pontIndexFirst].angel;
+        tem = [tem stringByAppendingString:[NSString stringWithFormat:@"%d -> %d,",angelOfFirst, pontIndexFirst]];
     }
-    tem = [tem stringByAppendingString:[NSString stringWithFormat:@"%f",(*angels)[n]]];
-    NSLog(@"%@",tem);
+    tem = [tem stringByAppendingString:[NSString stringWithFormat:@"%f",(*angels)[end]]];
+    return tem;
 }
 
 /**
@@ -159,7 +160,21 @@
     }
 }
 
-
+/**
+ *  当机器人在朝着一个方向走的时候，反方向给堵住，，设置为intmax即可
+ *  @param start 相邻两点的起始点
+ *  @param end   相邻两点的终点
+ *  @param gragh 待修改的图
+ */
++ (void )preventTheWay:(mGraph *)gragh OfStart:(int)start toEnd:(int)end {
+    int weight = gragh -> weightAndAngels[start][end].weight;
+    if (weight == INTMAX) {
+        NSLog(@"start and end point not in passed by");
+        return;
+    }
+    gragh->weightAndAngels[start][end].weight = INTMAX;//反方向给堵住
+    //    gragh.weightAndAngels[end][start].weight = INTMAX;//反方向给堵住
+}
 
 
 @end

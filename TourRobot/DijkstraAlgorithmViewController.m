@@ -40,6 +40,7 @@ int A[MAXNUM][MAXNUM];
 @interface Node : NSObject
 @property (nonatomic) NSString *idString;
 @property (nonatomic) NSMutableArray *edgesArray;
+
 + (instancetype)initWithId :(NSString *)idString ;
 - (void)addEdgeWithEndId:(NSString *)endId weight:(float)weight;
 @end
@@ -161,10 +162,10 @@ int A[MAXNUM][MAXNUM];
             }
             if (!S[j] && A[u][i] != MAXINT) {
                 int t1 = dist[j];
-                int t2 = dist[u] + A[u][j];
+                int t2 = mindist + A[u][j];
                 if (t1 > t2) {
-                    dist[j] = dist[u] + A[u][j];
-                    prev[j] = u;
+                    dist[j] = mindist + A[u][j];
+                    prev[j] = u; //前驱为u
                 }
             }
         }

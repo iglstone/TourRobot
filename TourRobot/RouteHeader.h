@@ -33,6 +33,7 @@ typedef int         distancesSum2DTabel[MAXVEX][MAXVEX];//两点间最短路径�
 typedef float       vexAngels[MAXVEX];
 
 
+// we can find how to use
 //typedef struct {
 //    int pointNum;//到达指定地点的id号
 //    float angel;//指定点的Angel

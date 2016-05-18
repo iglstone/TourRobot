@@ -10,6 +10,10 @@
 #import <UIKit/UIKit.h>
 
 @interface CommonsFunc : NSObject
+
+//将图像放大缩小至指定长度
++ (UIImage *)imagePinch:(UIImage *)img width:(int)width height:(int)height ;
+
 +(BOOL)isDeviceIpad;
 /**
  *  判断程序整个生命周期都只执行一次

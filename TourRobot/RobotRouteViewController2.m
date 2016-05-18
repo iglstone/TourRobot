@@ -10,15 +10,28 @@
 #import "RouteHeader.h"
 #import "FloydAlgorithm.h"
 #import "RouteView.h"
+#import "ZDStickerView.h"
 
-@interface RobotRouteViewController2 ()
+#define TABLEVIEWWIDTH 100
+#define TOUCHPINCHTHRESHHOLD 10
+#define TABLEVIEWTOPOFFSET 0//30
+
+@interface RobotRouteViewController2 () <UITableViewDataSource, UITableViewDelegate, ZDStickerViewDelegate>
 {
     mGraph m_graph;
     NSMutableArray *m_realPosotionsArray;
-    
     vexAngels vexsAngel;
     vexsPre2DTabel vexsPre2D;
     distancesSum2DTabel distanceSum2D;
+    
+    UIView *backgroundRightView;
+    UITableView *leftTabelView;
+    NSInteger screenHeight;
+    NSInteger screenWidth;
+    UIView *tmpPickedView;
+    NSMutableArray *zdsticks;
+    BOOL canEdit;
+    UIView *rightView;
 }
 @end
 
@@ -30,20 +43,27 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
     
+    /*****合并画画View***/
+    [self addDrawViews];
+    /******************/
+    
     [self initPara];
+    [self creatMGragh];//初始信息需要手动输入
     
     [FloydAlgorithm initSingelPointIdAndAngel:&vexsAngel withIdAndAngels:@[@0,@30,@60,@90,@100,@160,@150,@30,@30]];
     [FloydAlgorithm floydShortestPath:&m_graph pointsTabel:&vexsPre2D shortTable:&distanceSum2D];
-    [FloydAlgorithm findShortestPath:&m_graph from:0 to:5 pointsTabel:&vexsPre2D robotAngels:&vexsAngel];
-    [FloydAlgorithm findShortestPath:&m_graph from:5 to:0 pointsTabel:&vexsPre2D robotAngels:&vexsAngel];
+    NSString *pathTo = [FloydAlgorithm findShortestPath:&m_graph from:0 to:5 pointsTabel:&vexsPre2D robotAngels:&vexsAngel];
+    NSString *pathBack = [FloydAlgorithm findShortestPath:&m_graph from:5 to:0 pointsTabel:&vexsPre2D robotAngels:&vexsAngel];
+    NSLog(@"pathTo: %@ \n PathBack: %@" , pathTo, pathBack);
     
     [self logSomeThing];
     
     //数据驱动绘图
     RouteView *routeView = [[RouteView alloc] initWithFrame:CGRectMake(0, 0, 500, 500)];
-    [self.view addSubview:routeView];
+    [backgroundRightView addSubview:routeView];
     routeView.m_pointPositionsArray = m_realPosotionsArray;
     [routeView drawLineAndPoints:&m_graph withTailAngel:&vexsAngel];
+    
 }
 
 - (void) initPara {
@@ -56,6 +76,14 @@
     }
     
     NSArray *angels = @[@100, @11, @100, @99, @110, @199, @11, @11, @11];
+    if (angels.count != pointsArr.count) {
+        NSLog(@"error angels Num:%lu and points Num:%lu",(unsigned long)angels.count, (unsigned long)pointsArr.count);
+        return;
+    }
+    if (angels.count != m_graph.numVertexes) {
+        NSLog(@"miss or add some other point");
+        return;
+    }
     for (int v = 0; v < POINTSNUM; v++) {
         float angel = [[angels objectAtIndex:v] floatValue];
         vexsAngel[v] = angel;
@@ -66,26 +94,6 @@
     for (int v = 0; v < m_graph.numVertexes; v++) {
         [m_realPosotionsArray insertObject:[NSValue valueWithCGPoint:CGPointMake(0, 0)] atIndex:v];
     }
-    
-    [self creatMGragh];//初始信息需要手动输入
-}
-
-#pragma mark - logic
-/**
- *  当机器人在朝着一个方向走的时候，反方向给堵住，，设置为intmax即可
- *  @param start 相邻两点的起始点
- *  @param end   相邻两点的终点
- *  @param gragh 待修改的图
- */
-- (void )onTheWayOfStart:(int)start end:(int)end {//gragh:(mGraph *)gragh {
-//    int weight = gragh -> weightAndAngels[start][end].weight;
-    int weight = m_graph.weightAndAngels[start][end].weight;
-    if (weight == INTMAX) {
-        NSLog(@"start and end point not in passed by");
-        return;
-    }
-    m_graph.weightAndAngels[end][start].weight = INTMAX;//反方向给堵住
-//    gragh.weightAndAngels[end][start].weight = INTMAX;//反方向给堵住
 }
 
 #pragma mark - initNodeFonc
@@ -211,6 +219,147 @@
         graph->weightAndAngels[start][end].angel = angel;
     }
 }
+#pragma mark - addDrawViews
+- (void)addDrawViews {
+    screenHeight = [[UIScreen mainScreen] bounds].size.height;
+    screenWidth = [[UIScreen mainScreen] bounds].size.width;
+    zdsticks  = [NSMutableArray new];
+    
+    backgroundRightView = [[UIView alloc] initWithFrame:CGRectMake(30, 30, screenWidth-60, screenHeight-60)];
+    backgroundRightView.backgroundColor = [UIColor orangeColor];
+    [self.view addSubview:backgroundRightView];
+    
+    CGRect rect = CGRectMake(200, 30, 100, 100);
+    UIImageView *view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"music"]];
+    view.frame = rect;
+    ZDStickerView *sticker = [[ZDStickerView alloc] initWithFrame:rect];
+    sticker.contentView = view;
+    sticker.stickerViewDelegate = self;
+    sticker.translucencySticker = NO;
+    sticker.minHeight = 50;
+    sticker.minWidth = 50;
+    [sticker showEditingHandles];
+    [backgroundRightView addSubview:sticker];
+    [zdsticks addObject:sticker];
+    
+    UIButton *btn = [UIButton new];
+    btn.backgroundColor = [UIColor orangeColor];
+    [self.view addSubview:btn];
+    [btn setTitle:@"编辑" forState:UIControlStateNormal];
+    [btn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.view).offset(20);
+        make.right.equalTo(self.view).offset(-20);
+        make.width.mas_equalTo(@100);
+    }];
+    [btn addTarget:self action:@selector(btnTaped:) forControlEvents:UIControlEventTouchUpInside];
+    
+    leftTabelView = [[UITableView alloc] initWithFrame:CGRectMake(0, TABLEVIEWTOPOFFSET, TABLEVIEWWIDTH, screenHeight - TABLEVIEWTOPOFFSET*2) style:UITableViewStylePlain];
+    leftTabelView.frame = CGRectMake(0, TABLEVIEWTOPOFFSET, 0, screenHeight - TABLEVIEWTOPOFFSET * 2);
+    [self.view addSubview:leftTabelView];
+    leftTabelView.dataSource = self;
+    leftTabelView.delegate = self;
+    leftTabelView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    leftTabelView.showsVerticalScrollIndicator = NO;
+    leftTabelView.backgroundColor = [UIColor clearColor];
+    
+    //to hide btns ,not use now
+//    CGRect rect2 = CGRectMake(screenWidth - TABLEVIEWWIDTH, 0, 100, screenHeight);
+//    rightView = [[UIView alloc] initWithFrame:rect2];
+//    rightView.backgroundColor = [UIColor lightGrayColor];
+//    [self.view addSubview:rightView];
+}
+
+#pragma mark - btn taped
+- (void) btnTaped:(UIButton *)btn {
+    if ([btn.titleLabel.text isEqualToString:@"编辑"]) {
+        canEdit = YES;
+        [btn setTitle:@"完成" forState:UIControlStateNormal];
+        btn.backgroundColor = [UIColor redColor];
+        
+        [UIView beginAnimations:@"table" context:nil];
+        [UIView setAnimationDuration:0.4];
+        [UIView setAnimationCurve:UIViewAnimationCurveLinear];
+        leftTabelView.frame = CGRectMake(0, TABLEVIEWTOPOFFSET, TABLEVIEWWIDTH, screenHeight - TABLEVIEWTOPOFFSET * 2);
+        backgroundRightView.frame = CGRectMake( TABLEVIEWWIDTH, 0, screenWidth - TABLEVIEWWIDTH, screenHeight );
+        [UIView commitAnimations];
+        
+        for (ZDStickerView *st in zdsticks) {
+            [st showEditingHandles];
+        }
+        return;
+    }
+    if ([btn.titleLabel.text isEqualToString:@"完成"]) {
+        canEdit = NO;
+        [btn setTitle:@"编辑" forState:UIControlStateNormal];
+        btn.backgroundColor = [UIColor orangeColor];
+        
+        [UIView beginAnimations:@"table" context:nil];
+        [UIView setAnimationDuration:0.4];
+        [UIView setAnimationCurve:UIViewAnimationCurveLinear];
+        leftTabelView.frame = CGRectMake(0, TABLEVIEWTOPOFFSET, 0, screenHeight - TABLEVIEWTOPOFFSET * 2);
+        backgroundRightView.frame = CGRectMake(0, 0, screenWidth , screenHeight );
+        [UIView commitAnimations];
+        
+        for (ZDStickerView *st in zdsticks) {
+            [st hideEditingHandles];
+        }
+        return;
+    }
+}
+
+#pragma  mark - table dele
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    static NSString *st = @"leftabtlview";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:st];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"leftTableView"];
+    }
+    //    cell.textLabel.text = @"桌子";
+    cell.imageView.image = [UIImage imageNamed:@"desk_red"];
+    cell.backgroundColor = [UIColor orangeColor];
+    cell.imageView.image = [CommonsFunc imagePinch:[UIImage imageNamed:@"desk_white"] width:60 height:60];
+    switch (indexPath.row) {
+        case 0:
+            cell.imageView.image = [CommonsFunc imagePinch:[UIImage imageNamed:@"desk_red"] width:60 height:60];
+            break;
+        case 1:
+            cell.imageView.image = [CommonsFunc imagePinch:[UIImage imageNamed:@"robot_2"] width:60 height:60];
+            break;
+        case 2:
+            cell.imageView.image = [CommonsFunc imagePinch:[UIImage imageNamed:@"robot_3"] width:60 height:60];
+        default:
+            break;
+    }
+    
+    return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    UIImageView *pickedView = [cell imageView];
+    UIImage *new = [CommonsFunc imagePinch:[pickedView image] width:pickedView.frame.size.width height:pickedView.frame.size.height];
+    tmpPickedView = [[UIImageView alloc] initWithImage:new];
+    CGRect rectInTableView = [tableView rectForRowAtIndexPath:indexPath];
+    CGRect rect1 = [tableView convertRect:rectInTableView toView:self.view];
+    ZDStickerView *zt = [[ZDStickerView alloc] initWithFrame:rect1];
+    zt.contentView = tmpPickedView;
+    zt.stickerViewDelegate = self;
+    [zt showEditingHandles];
+    zt.translucencySticker = NO;
+    zt.preventsPositionOutsideSuperview = YES;
+    [backgroundRightView addSubview:zt];
+    [zdsticks addObject:zt];
+    
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 8;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 130;
+}
+
 
 #pragma mark - privateMethod 
 - (void)logSomeThing {

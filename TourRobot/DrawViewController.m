@@ -14,11 +14,11 @@
 #define TOUCHPINCHTHRESHHOLD 10
 #define TABLEVIEWTOPOFFSET 0//30
 
-typedef NS_OPTIONS(NSUInteger, TOUCHTYPE) {
-    TOUCHTYPE_NONE    = 1 << 0, //0
-    TOUCHTYPE_MOVE    = 1 << 1, // 2
-    TOUCHTYPE_PINCH   = 1 << 2, // 4
-};
+//typedef NS_OPTIONS(NSUInteger, TOUCHTYPE) {
+//    TOUCHTYPE_NONE    = 1 << 0, //0
+//    TOUCHTYPE_MOVE    = 1 << 1, // 2
+//    TOUCHTYPE_PINCH   = 1 << 2, // 4
+//};
 
 @interface DrawViewController () <UITableViewDataSource, UITableViewDelegate,ZDStickerViewDelegate>{
     UIView *backgroundRightView;
@@ -96,15 +96,15 @@ typedef NS_OPTIONS(NSUInteger, TOUCHTYPE) {
     
 }
 
-- (TOUCHTYPE) pointIsInView :(CGPoint )point view:(UIView *)view{
-    if ((ABS(point.x - view.frame.size.width) + ABS(point.y - view.frame.size.height)) <= 20) {
-        return TOUCHTYPE_PINCH;
-    }
-    if (point.x > 0 && point.y > 0 && point.x <= view.frame.size.width && point.y <= view.frame.size.height) {
-        return TOUCHTYPE_MOVE;
-    }
-    return TOUCHTYPE_NONE;
-}
+//- (TOUCHTYPE) pointIsInView :(CGPoint )point view:(UIView *)view{
+//    if ((ABS(point.x - view.frame.size.width) + ABS(point.y - view.frame.size.height)) <= 20) {
+//        return TOUCHTYPE_PINCH;
+//    }
+//    if (point.x > 0 && point.y > 0 && point.x <= view.frame.size.width && point.y <= view.frame.size.height) {
+//        return TOUCHTYPE_MOVE;
+//    }
+//    return TOUCHTYPE_NONE;
+//}
 
 #pragma mark - btn taped
 - (void) btnTaped:(UIButton *)btn {
