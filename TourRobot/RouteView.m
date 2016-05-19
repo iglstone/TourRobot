@@ -8,6 +8,8 @@
 
 #import "RouteView.h"
 
+#define POSITIONOFFSET 30
+
 @interface RouteView (){
     UIBezierPath *m_bezierPath;
     CAShapeLayer *m_lineShapLayer;
@@ -18,6 +20,18 @@
 @implementation RouteView
 @synthesize m_pointPositionsArray;
 
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        m_bezierPath = [UIBezierPath new];
+        m_lineShapLayer = [[CAShapeLayer alloc] init];
+        m_lineShapLayer.strokeColor = [UIColor blueColor].CGColor;
+        [self.layer addSublayer:m_lineShapLayer];
+        self.backgroundColor = [UIColor clearColor];
+    }
+    return self;
+}
+
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
@@ -25,9 +39,24 @@
         m_lineShapLayer = [[CAShapeLayer alloc] init];
         m_lineShapLayer.strokeColor = [UIColor redColor].CGColor;
         [self.layer addSublayer:m_lineShapLayer];
+        self.backgroundColor = [UIColor clearColor];
     }
     return self;
 }
+
+- (CGPoint)changeCood:(CGPoint) pt {
+    int scH = [[UIScreen mainScreen] bounds].size.height;
+    int scW = [[UIScreen mainScreen] bounds].size.width;
+    float scaleX = (float)  (scW - 2*POSITIONOFFSET) / MAPMAXWIDTH ;
+    float scaleY = (float)  (scH - 2*POSITIONOFFSET) / MAPMAXHEIGHT ;
+    
+    int newPty = scH - 2*POSITIONOFFSET - pt.y * scaleY ;
+    
+    CGPoint new = CGPointMake(POSITIONOFFSET + pt.x * scaleX, newPty *scaleY - POSITIONOFFSET*2 );
+    return new;
+}
+
+
 
 #pragma mark - draw views
 /**
@@ -36,6 +65,12 @@
  *  @param angels 角度信息
  */
 - (void)drawLineAndPoints :(mGraph *)graph withTailAngel:(vexAngels *)angels {
+    for (int i = 0 ; i<m_pointPositionsArray.count; i++) {
+        CGPoint old = [[m_pointPositionsArray objectAtIndex:i] CGPointValue];
+        CGPoint new = [self changeCood:old];
+        [m_pointPositionsArray replaceObjectAtIndex:i withObject:[NSValue valueWithCGPoint:new]];
+    }
+    
     int i,j;
     for (i = 0; i < graph->numVertexes; i++) {
         for (j = i+1; j < graph->numVertexes; j++) {

@@ -78,15 +78,15 @@
 /**
  *  初始化终点的角度信息
  *  @param vexsAngel 一维数组
- *  @param angels      角度信息
+ *  @param angels    角度信息
  */
 + (void )initSingelPointIdAndAngel:(vexAngels *)vexAngels withIdAndAngels:(NSArray *)angels {
     int v;
-    if (angels.count != POINTSNUM) {
+    if (angels.count != MAXVEX) {
         NSLog(@"points num is not equal to angels num");
         return;
     }
-    for (v = 0; v < POINTSNUM; v++) {
+    for (v = 0; v < MAXVEX; v++) {
         float angel = [[angels objectAtIndex:v] floatValue];
         (*vexAngels)[v] = angel;
     }

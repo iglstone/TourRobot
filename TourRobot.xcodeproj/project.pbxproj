@@ -276,6 +276,20 @@
 			name = ZDStickerView;
 			sourceTree = "<group>";
 		};
+		E36A67971CED94CA00941DD1 /* Floyd */ = {
+			isa = PBXGroup;
+			children = (
+				E3D79A761CEAABDC0009600F /* RobotRouteViewController2.h */,
+				E3D79A771CEAABDC0009600F /* RobotRouteViewController2.m */,
+				E3F9B0EE1CEC040400C97305 /* RouteHeader.h */,
+				E3D79A791CEAB8150009600F /* FloydAlgorithm.h */,
+				E3D79A7A1CEAB8150009600F /* FloydAlgorithm.m */,
+				E361A0121CEC46930084353C /* RouteView.h */,
+				E361A0131CEC46930084353C /* RouteView.m */,
+			);
+			name = Floyd;
+			sourceTree = "<group>";
+		};
 		E3B64FB81CDDD53B00584A38 /* StarGazer */ = {
 			isa = PBXGroup;
 			children = (
@@ -285,13 +299,7 @@
 				E30183281CD9C4D1009C818C /* FloydAlgorithmViewController.m */,
 				E3B65FA21CDAED43009B6551 /* RobotRouteViewController.h */,
 				E3B65FA31CDAED43009B6551 /* RobotRouteViewController.m */,
-				E3D79A761CEAABDC0009600F /* RobotRouteViewController2.h */,
-				E3D79A771CEAABDC0009600F /* RobotRouteViewController2.m */,
-				E3F9B0EE1CEC040400C97305 /* RouteHeader.h */,
-				E3D79A791CEAB8150009600F /* FloydAlgorithm.h */,
-				E3D79A7A1CEAB8150009600F /* FloydAlgorithm.m */,
-				E361A0121CEC46930084353C /* RouteView.h */,
-				E361A0131CEC46930084353C /* RouteView.m */,
+				E36A67971CED94CA00941DD1 /* Floyd */,
 				E3B64FB91CDDD5A000584A38 /* GlViewController.h */,
 				E3B64FBA1CDDD5A000584A38 /* GlViewController.m */,
 				E3B64FBB1CDDD5A000584A38 /* PathBuilderView.h */,

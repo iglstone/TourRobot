@@ -11,11 +11,14 @@
 
 #import <math.h>
 
-#define MAXVEX     20
-#define MAXEDGE    20
-#define POINTSNUM  9
+#define MAXVEX     4
+#define MAXEDGE    4
+//#define POINTSNUM  9
 #define INTMAX     65535
 #define POINTRADUS 7
+
+#define MAPMAXWIDTH  1200//实际地图尺寸,CM
+#define MAPMAXHEIGHT  650//实际地图尺寸,CM
 
 typedef struct {
     float weight;//连线长度
