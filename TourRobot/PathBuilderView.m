@@ -193,7 +193,7 @@ static CGFloat const kPointDiameter = 7.0;
     self.pressTimer = nil;
 
     NSValue *pointValue = [self pointValueWithTouches:touches];
-
+    
     if (self.indexOfSelectedPoint != NSNotFound) {
         NSValue *offsetPointValue = [self pointValueByRemovingOffset:self.touchOffsetForSelectedPoint fromPointValue:pointValue];
         [self.points replaceObjectAtIndex:self.indexOfSelectedPoint withObject:offsetPointValue];

@@ -13,6 +13,7 @@
 @interface RouteView (){
     UIBezierPath *m_bezierPath;
     CAShapeLayer *m_lineShapLayer;
+    CGPoint tmpPoint;
 }
 
 @end
@@ -56,7 +57,9 @@
     return new;
 }
 
-
+- (void)updateRobotPosition :(NSTimer *)time {
+    
+}
 
 #pragma mark - draw views
 /**
@@ -70,7 +73,10 @@
         CGPoint new = [self changeCood:old];
         [m_pointPositionsArray replaceObjectAtIndex:i withObject:[NSValue valueWithCGPoint:new]];
     }
-    
+    NSTimer *time = [NSTimer timerWithTimeInterval:500 target:self selector:@selector(updateRobotPosition:) userInfo:nil repeats:YES];
+    if (time) {
+        //
+    }
     int i,j;
     for (i = 0; i < graph->numVertexes; i++) {
         for (j = i+1; j < graph->numVertexes; j++) {
